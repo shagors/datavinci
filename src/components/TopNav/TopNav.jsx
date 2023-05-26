@@ -12,7 +12,10 @@ const TopNav = () => {
                     <span><i className='ri-search-line'></i></span>
                 </div>
                 <div className="top__nav-right">
-                    <span className='notification'><i className="ri-notification-3-line"></i></span>
+                    <span className='notification'>
+                        <i className="ri-notification-3-line"></i>
+                        <span className='badge'></span>
+                    </span>
                     <div className="profile">
                         <Link to="/settings">
                             <img src={profileImg} alt="Profile Image" />
