@@ -1,10 +1,11 @@
 import React from 'react'
 import "../styles/dashboard.css"
 import SingleCard from '../components/reuseable/SingleCard'
+import MileChart from '../charts/MileChart';
+import CarStatsChart from '../charts/CarStatsChart';
+import RecommendCarCard from '../components/UI/RecommendCarCard';
 
-import { ResponsiveContainer, BarChart, Bar, XAxis, Tooltip } from 'recharts';
-
-import mileStatics from '../assets/dummy-data/mileStatics';
+import recommendCarsData from "../assets/dummy-data/recommendCars"
 
 
 const carObj = {
@@ -44,17 +45,21 @@ const Dashboard = () => {
 
                 <div className="statics">
                     <div className="stats">
-                        <ResponsiveContainer width="100%" aspect={4 / 1}>
-                            <BarChart data={mileStatics}>
-                                <XAxis dataKey="name" stroke='#2884ff' />
-                                <Bar dataKey="mileStats" stroke='#2884ff' fill='#2884ff' />
-                                <Tooltip />
-                            </BarChart>
-                        </ResponsiveContainer>
+                        <h3 className='stats__title'>Miles Statistics</h3>
+                        <MileChart />
+                    </div>
+
+                    <div className='stats'>
+                        <h3 className='stats__title'>Car Statistics</h3>
+                        <CarStatsChart />
                     </div>
                 </div>
 
-
+                <div className="recommend__cars-wrapper">
+                    {recommendCarsData.map((item) => (
+                        <RecommendCarCard item={item} key={item.id} />
+                    ))}
+                </div>
             </div>
         </div>
     )
